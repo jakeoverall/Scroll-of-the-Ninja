@@ -7,8 +7,9 @@ public class Detect : MonoBehaviour
     public bool detected = false;
 
 	// Use this for initialization
-	void Start () {
-	
+	void Start ()
+	{
+	    detected = false;
 	}
 	
 	// Update is called once per frame
