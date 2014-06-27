@@ -1,11 +1,13 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SocialPlatforms;
 
 public class CharacterController : MonoBehaviour
 {
 
     public float maxSpeed = 10f;
+    public float dashForce = 250f;
     bool facingRight = true;
 
     Animator anim;
@@ -23,18 +25,24 @@ public class CharacterController : MonoBehaviour
     public float jumpPushForce = 15f;
 
     //double jump
-    bool doubleJump = false;
+    private bool doubleJump = false;
+    private int dTap;
+
+    //Double Tap for Dashing
+    private DoubleTap doubleTap;
 
     // Use this for initialization
     void Start()
     {
         anim = GetComponent<Animator>();
+        doubleTap = GetComponentInChildren<DoubleTap>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-
+        dTap = doubleTap.ButtonCount;
+        
         // The player is grounded if a linecast to the groundcheck position hits anything on the ground layer.
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
         touchingWall = Physics2D.OverlapCircle(wallCheck.position, wallTouchRadius, whatIsWall);
@@ -57,8 +65,15 @@ public class CharacterController : MonoBehaviour
         float move = Input.GetAxis("Horizontal");
         anim.SetFloat("Speed", Mathf.Abs(move));
 
+        
         if(!touchingWall || grounded)
             anim.SetInteger("AnimState", !(Math.Abs(move) < 0.1f) ? 1 : 0);
+        
+        if (dTap > 1)
+        {
+            anim.SetInteger("AnimState", 2);
+            rigidbody2D.AddForce(facingRight ? new Vector2(dashForce, 10) : new Vector2(-dashForce, 10));
+        }
 
         rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
 
@@ -75,6 +90,8 @@ public class CharacterController : MonoBehaviour
         }
         
     }
+    
+
     void Update()
     {
 
@@ -117,5 +134,9 @@ public class CharacterController : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
+    public IEnumerator DashCooldown()
+    {
+        yield return new WaitForSeconds(3f);
     }
 }

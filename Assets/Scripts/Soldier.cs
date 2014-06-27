@@ -77,4 +77,31 @@ public class Soldier : MonoBehaviour
         anim.SetInteger("AnimState", 3);
         waitTime = 2;
     }
+
+    public void StartPatrol()
+    {
+        anim.SetInteger("AnimState", 1);
+        Patrolling();
+    }
+
+    public void Patrolling()
+    {
+        patrolling = true;
+    }
+
+    public void StopPatrol()
+    {
+        patrolling = false;
+        anim.SetInteger("AnimState", 4);
+    }
+
+    public void Idle()
+    {
+        patrolling = false;
+        searching = false;
+        anim.SetBool("Alerted", false);
+        anim.SetInteger("AnimState", 6);
+    }
+
+    
 }
