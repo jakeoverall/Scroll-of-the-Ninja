@@ -3,7 +3,7 @@ using System.Collections;
 
 public class DoubleTap : MonoBehaviour
 {
-    private float ButtonCooler = 0.5f;
+    private float ButtonCooler = 0.2f;
     public int ButtonCount = 0;
 
     void Update()
@@ -12,7 +12,7 @@ public class DoubleTap : MonoBehaviour
         {
             if (!(ButtonCooler > 0) || ButtonCount != 2)
             {
-                ButtonCooler = 0.5f;
+                ButtonCooler = 0.2f;
                 ButtonCount += 1;
             }
         }

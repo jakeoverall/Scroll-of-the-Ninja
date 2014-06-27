@@ -6,12 +6,24 @@ public class Soldier : MonoBehaviour
     public bool patrolling;
     public bool searching;
     public float speed = 0.7f;
+    public float patrolTimer = 15f;
+    public float idleTimer = 4f;
 
     public bool alert = false;
-    public float waitTime = 2f;
+    public float attackWaitTime = 1f;
     public float searchTime = 15f;
 
+    public enum State
+    {
+        Idle = 0,
+        StartPatrolling = 1,
+        Patrolling = 2,
+        Alerted = 3,
+        Attacking = 4,
+        Searching = 5
+    }
 
+    private State currentState;
     private Detect detect;
     private Animator anim;
 
@@ -28,13 +40,12 @@ public class Soldier : MonoBehaviour
         if (patrolling)
         {
             anim.SetInteger("AnimState", 2);
-            searching = false;
             rigidbody2D.velocity = new Vector2(transform.localScale.x, 0) * speed;
+            patrolTimer -= Time.deltaTime;
         }
         if (searching)
         {
             anim.SetInteger("AnimState", 2);
-            patrolling = false;
             rigidbody2D.velocity = new Vector2(transform.localScale.x, 0) * speed * 1.5f;
         }
     }
@@ -42,40 +53,81 @@ public class Soldier : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        print(currentState);
+
+        switch (currentState)
+        {
+            case State.Idle:
+                Idle();
+                break;
+            case State.StartPatrolling:
+                StopSearching();
+                break;
+            case State.Alerted:
+                Alerted();
+                break;
+            case State.Patrolling:
+                Patrolling();
+                break;
+            case State.Attacking:
+                Attack();
+                break;
+            case State.Searching:
+                Searching();
+                break;
+            default:
+                Idle();
+                break;
+        }
+
         if (detect.detected)
         {
-            alert = true;
-            patrolling = false;
-            searchTime = 15f;
-            if (waitTime <= 0)
-            {
-                Attack();
-            }
-            waitTime -= Time.deltaTime;
+            currentState = State.Alerted;
         }
 
-        searching = !detect.detected && searchTime > 0;
-        if (alert && !detect.detected)
+        if (!detect.detected && searchTime > 0)
         {
-            searchTime -= Time.deltaTime;
+            currentState = State.Searching;
         }
-        //return to Gun Idle after searching
-        if (alert && searchTime <= 0)
+        if (searchTime <= 0)
         {
-            alert = false;
-            searching = false;
-            searchTime = 0;
-            anim.SetInteger("AnimState", 4);
-            patrolling = true;
+            currentState = State.StartPatrolling;
         }
-
-
+        if (patrolTimer < 0)
+        {
+            currentState = State.Idle;
+        }
+        if (idleTimer <= 0)
+        {
+            currentState = State.Patrolling;
+            RestartPatrol();
+        }
     }
+
+    public void Alerted()
+    {
+        alert = true;
+        anim.SetBool("Alerted", true);
+        anim.SetBool("Detected", true);
+        StopPatrol();
+        searchTime = 15f;
+        if (attackWaitTime <= 0)
+        {
+            anim.SetBool("Attacking", true);
+            Attack();
+        }
+        else
+        {
+            anim.SetBool("Attacking", false);
+        }
+        attackWaitTime -= Time.deltaTime;
+    }
+
     public void Attack()
     {
         print("shooting");
-        anim.SetInteger("AnimState", 3);
-        waitTime = 2;
+        currentState = State.Attacking;
+        attackWaitTime = 0.5f;
     }
 
     public void StartPatrol()
@@ -86,22 +138,48 @@ public class Soldier : MonoBehaviour
 
     public void Patrolling()
     {
+        idleTimer = 8;
+        patrolling = true;
+        searching = false;
+    }
+
+    public void Searching()
+    {
+        anim.SetInteger("AnimState", 2);
+        anim.SetBool("Attacking", false);
+        anim.SetBool("Detected", false);
+        searchTime -= Time.deltaTime;
+        searching = true;
+        patrolling = false;
+    }
+
+    public void StopSearching()
+    {
+        alert = false;
+        searching = false;
+        searchTime = 0;
         patrolling = true;
     }
 
     public void StopPatrol()
     {
         patrolling = false;
-        anim.SetInteger("AnimState", 4);
+        searching = false;
+        currentState = State.Idle;
+        anim.SetBool("Alerted", true);
     }
 
     public void Idle()
     {
         patrolling = false;
         searching = false;
+        anim.SetInteger("AnimState", 8);
         anim.SetBool("Alerted", false);
-        anim.SetInteger("AnimState", 6);
+        idleTimer -= Time.deltaTime;
     }
 
-    
+    public void RestartPatrol()
+    {
+        patrolTimer = 15f;
+    }
 }
