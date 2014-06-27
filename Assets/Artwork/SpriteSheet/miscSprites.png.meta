@@ -1,0 +1,301 @@
+fileFormatVersion: 2
+guid: 90764795b5b989d448f80b1d4b461689
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: 0
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: iPhone
+    maxTextureSize: 1024
+    textureFormat: -2
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: miscSprites_0
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 377
+        width: 10
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: miscSprites_1
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 377
+        width: 10
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: miscSprites_2
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 377
+        width: 10
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: miscSprites_3
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 418
+        width: 10
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: miscSprites_4
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 418
+        width: 10
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: miscSprites_5
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 418
+        width: 10
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: miscSprites_6
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 454
+        width: 10
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: miscSprites_7
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 454
+        width: 10
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: miscSprites_8
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 454
+        width: 10
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: miscSprites_9
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 433
+        width: 113
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: miscSprites_10
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 433
+        width: 113
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: miscSprites_11
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 433
+        width: 62
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: miscSprites_12
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 460
+        width: 62
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: miscSprites_13
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 494
+        width: 23
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: miscSprites_14
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 477
+        width: 43
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: miscSprites_15
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 398
+        width: 48
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: miscSprites_16
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 403
+        width: 106
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: miscSprites_17
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 393
+        width: 106
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: miscSprites_18
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 377
+        width: 137
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: miscSprites_19
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 393
+        width: 106
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: miscSprites_20
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 372
+        width: 106
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: miscSprites_21
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 372
+        width: 106
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: miscSprites_22
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 319
+        width: 106
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: miscSprites_23
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 319
+        width: 106
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: miscSprites_24
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 298
+        width: 106
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: miscSprites_25
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 292
+        width: 106
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: miscSprites_26
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 245
+        width: 106
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: miscSprites_27
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 248
+        width: 106
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+  spritePackingTag: 
+  userData: 
