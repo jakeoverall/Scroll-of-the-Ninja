@@ -3,6 +3,9 @@ using System.Collections;
 
 public class Soldier : MonoBehaviour
 {
+
+    public Projectile projectile;
+
     public bool patrolling;
     public bool searching;
     public float speed = 0.7f;
@@ -12,6 +15,9 @@ public class Soldier : MonoBehaviour
     public bool alert = false;
     public float attackWaitTime = 1f;
     public float searchTime = 15f;
+    public bool facingRight;
+
+    private LookForward looking;
 
     public enum State
     {
@@ -32,6 +38,8 @@ public class Soldier : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         detect = GetComponentInChildren<Detect>();
+        looking = GetComponent<LookForward>();
+        facingRight = looking.lookingRight;
     }
 
 
@@ -53,7 +61,7 @@ public class Soldier : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(currentState);
+        facingRight = looking.lookingRight;
 
         switch (currentState)
         {
@@ -127,7 +135,17 @@ public class Soldier : MonoBehaviour
     {
         print("shooting");
         currentState = State.Attacking;
+        Fire();
         attackWaitTime = 0.5f;
+    }
+
+    void Fire()
+    {
+        if (projectile)
+        {
+            var clone = Instantiate(projectile, transform.position, Quaternion.identity) as Projectile;
+            clone.rigidbody2D.AddForce(facingRight ? new Vector2(1000, 0) : new Vector2(-1000, 0));
+        }
     }
 
     public void StartPatrol()
