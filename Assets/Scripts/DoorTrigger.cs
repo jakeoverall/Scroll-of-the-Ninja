@@ -52,8 +52,8 @@ public class DoorTrigger : MonoBehaviour
 
         var doorTriggerCollider = GetComponent<BoxCollider2D>();
         var doorTriggerPosition = doorTriggerCollider.transform.position;
-        var newPosition = new Vector2(doorTriggerPosition.x + doorTriggerCollider.center.x,
-            doorTriggerPosition.y + doorTriggerCollider.center.y);
+        var newPosition = new Vector2(doorTriggerPosition.x + doorTriggerCollider.offset.x,
+            doorTriggerPosition.y + doorTriggerCollider.offset.y);
         Gizmos.DrawWireCube(newPosition, new Vector2(doorTriggerCollider.size.x, doorTriggerCollider.size.y));
     }
 }

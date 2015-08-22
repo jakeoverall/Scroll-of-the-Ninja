@@ -21,8 +21,8 @@ public class NinjaDeath : MonoBehaviour {
     void Update()
     {
         time += Time.deltaTime;
-        renderer.material.color = Color.Lerp(start, end, time / 2);
-        if (renderer.material.color.a <= 0.0)
+        GetComponent<Renderer>().material.color = Color.Lerp(start, end, time / 2);
+        if (GetComponent<Renderer>().material.color.a <= 0.0)
             Destroy(gameObject);
     }
 }

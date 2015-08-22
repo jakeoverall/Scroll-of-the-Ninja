@@ -20,12 +20,12 @@ public class MoveForward : MonoBehaviour
         if (patrolling)
         {
             searching = false;
-            rigidbody2D.velocity = new Vector2(transform.localScale.x, 0) * speed;
+            GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0) * speed;
         }
         if (searching)
         {
             patrolling = false;
-            rigidbody2D.velocity = new Vector2(transform.localScale.x, 0) * speed * 1.5f;
+            GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0) * speed * 1.5f;
         }
     }
 }

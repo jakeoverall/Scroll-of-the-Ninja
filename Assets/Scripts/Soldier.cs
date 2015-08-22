@@ -17,11 +17,13 @@ public class Soldier : MonoBehaviour
 	public float searchTime = 0f;
 	public bool facingRight;
 	public bool detected = false;
+	public bool detectedTurnAround = false; 
 	public bool idle = true;
 	
 	private LookForward looking;
 	
 	private Detect detect;
+	private DetectBehind detectBehind;
 	private Animator anim;
 	
 	// Use this for initialization
@@ -30,6 +32,8 @@ public class Soldier : MonoBehaviour
 		anim = GetComponent<Animator>();
 		detect = GetComponentInChildren<Detect>();
 		detected = detect.detected;
+		detectBehind = GetComponentInChildren<DetectBehind>();
+		detectedTurnAround = detectBehind.detected;
 		looking = GetComponent<LookForward>();
 		facingRight = looking.lookingRight;
 	}
@@ -39,24 +43,29 @@ public class Soldier : MonoBehaviour
 	{
 		if (patrolling)
 		{
-			rigidbody2D.velocity = new Vector2(transform.localScale.x, 0) * speed;
+			GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0) * speed;
 			patrolTimer -= Time.deltaTime;
 		}
 		if (searching)
 		{
 			anim.SetInteger("AnimState", 2);
-			rigidbody2D.velocity = new Vector2(transform.localScale.x, 0) * speed * 1.5f;
+			GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0) * speed * 1.5f;
 		}
 	}
 	
 	// Update is called once per frame
 	void Update()
 	{
-		
+
 		facingRight = looking.lookingRight;
 		detected = detect.detected;
-		
-		if (detected)
+		detectedTurnAround = detectBehind.detected;
+
+		if (detectedTurnAround) {
+			Alerted();
+		}
+
+		if (detected || detectedTurnAround)
 		{
 			Alerted();
 			return;
@@ -122,7 +131,7 @@ public class Soldier : MonoBehaviour
 		if (projectile)
 		{
 			var clone = Instantiate(projectile, transform.position, Quaternion.identity) as Projectile;
-			clone.rigidbody2D.AddForce(facingRight ? new Vector2(1000, 0) : new Vector2(-1000, 0));
+			clone.GetComponent<Rigidbody2D>().AddForce(facingRight ? new Vector2(1000, 0) : new Vector2(-1000, 0));
 		}
 	}
 	

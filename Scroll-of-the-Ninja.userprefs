@@ -1,8 +1,19 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Soldier.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Death.cs">
     <Files>
-      <File FileName="Assets\Scripts\Soldier.cs" Line="171" Column="2" />
+      <File FileName="Assets/Scripts/DisplayRestartText.cs" Line="29" Column="1" />
+      <File FileName="Assets/Scripts/ClickToContinue.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Death.cs" Line="26" Column="93" />
+      <File FileName="Assets/Scripts/Detect.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Door.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/DoubleTap.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/ExitLevel.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/LookForward.cs" Line="1" Column="1" />
+      <File FileName="Assets/LookBehind.cs" Line="25" Column="44" />
+      <File FileName="Assets/Scripts/Soldier.cs" Line="35" Column="53" />
+      <File FileName="Assets/Scripts/CharacterController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/NinjaDeath.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

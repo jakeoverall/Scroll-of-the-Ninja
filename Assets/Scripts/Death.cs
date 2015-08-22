@@ -24,7 +24,7 @@ public class Death : MonoBehaviour
 
         t.TransformPoint(0, -20, 0);
         NinjaDeath clone = Instantiate(death, t.position, Quaternion.identity) as NinjaDeath;
-        if (clone != null) clone.rigidbody2D.AddForce(Vector3.right * Random.Range(-200, 200));
+        if (clone != null) clone.GetComponent<Rigidbody2D>().AddForce(Vector3.right * Random.Range(-200, 200));
 
         GameObject go = new GameObject("ClickToContinue");
         ClickToContinue script = go.AddComponent<ClickToContinue>();

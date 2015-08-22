@@ -60,7 +60,7 @@ public class CharacterController : MonoBehaviour
             doubleJump = false;
         }
 
-        anim.SetFloat("vSpeed", rigidbody2D.velocity.y);
+        anim.SetFloat("vSpeed", GetComponent<Rigidbody2D>().velocity.y);
         
         float move = Input.GetAxis("Horizontal");
         anim.SetFloat("Speed", Mathf.Abs(move));
@@ -72,10 +72,10 @@ public class CharacterController : MonoBehaviour
         if (dTap > 1)
         {
             anim.SetInteger("AnimState", 2);
-            rigidbody2D.AddForce(facingRight ? new Vector2(dashForce, 10) : new Vector2(-dashForce, 10));
+            GetComponent<Rigidbody2D>().AddForce(facingRight ? new Vector2(dashForce, 10) : new Vector2(-dashForce, 10));
         }
 
-        rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(move * maxSpeed, GetComponent<Rigidbody2D>().velocity.y);
 
         // If the input is moving the player right and the player is facing left...
         if (move > 0 && !facingRight)
@@ -99,7 +99,7 @@ public class CharacterController : MonoBehaviour
         if ((grounded || !doubleJump) && Input.GetButtonDown("Jump"))
         {
             anim.SetBool("Ground", false);
-            rigidbody2D.AddForce(new Vector2(0, jumpForce));
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpForce));
             anim.SetInteger("AnimState", 3);
             if (!doubleJump && !grounded)
             {
@@ -120,7 +120,7 @@ public class CharacterController : MonoBehaviour
     void WallJump()
     {
         anim.SetInteger("AnimState", 3);
-        rigidbody2D.AddForce(new Vector2(jumpPushForce, jumpForce/2));
+        GetComponent<Rigidbody2D>().AddForce(new Vector2(jumpPushForce, jumpForce/2));
     }
 
 
