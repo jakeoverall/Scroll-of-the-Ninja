@@ -5,7 +5,7 @@ public class ClickToContinue : MonoBehaviour
 {
 
     public string scene;
-
+	private float cooldown = 1.3f;
     private bool loadLock;
 
 	// Use this for initialization
@@ -16,12 +16,14 @@ public class ClickToContinue : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-	    if (Input.anyKeyDown && !loadLock)
+		cooldown -= Time.deltaTime;
+		if (Input.anyKeyDown && !loadLock && cooldown <= 0)
 	        LoadScene();
 	}
 
     void LoadScene()
     {
+		cooldown = 1.3f;
         loadLock = true;
         Application.LoadLevel(scene);
     }

@@ -46,7 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\LookBehind.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\CharacterController.cs" />
      <Compile Include="Assets\Scripts\ClickToContinue.cs" />
@@ -61,12 +60,15 @@
      <Compile Include="Assets\Scripts\ExitLevel.cs" />
      <Compile Include="Assets\Scripts\LaserState.cs" />
      <Compile Include="Assets\Scripts\LazerTrigger.cs" />
+     <Compile Include="Assets\Scripts\LookBehind.cs" />
      <Compile Include="Assets\Scripts\LookForward.cs" />
+     <Compile Include="Assets\Scripts\MeleeAttack.cs" />
      <Compile Include="Assets\Scripts\MoveForward.cs" />
      <Compile Include="Assets\Scripts\NinjaDeath.cs" />
      <Compile Include="Assets\Scripts\Projectile.cs" />
      <Compile Include="Assets\Scripts\Soldier.cs" />
      <Compile Include="Assets\Scripts\Switch.cs" />
+     <Compile Include="Assets\Scripts\SwordAttack.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

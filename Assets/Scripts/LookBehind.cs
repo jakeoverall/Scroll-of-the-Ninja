@@ -16,12 +16,11 @@ public class LookBehind : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		collision = Physics2D.Linecast(sightStart.position, sightEnd.position, 1 << LayerMask.NameToLayer("Player")) || Physics2D.Linecast(sightStart.position, sightEnd.position, 1 << LayerMask.NameToLayer("Enemy"));
+		collision = Physics2D.Linecast(sightStart.position, sightEnd.position, 1 << LayerMask.NameToLayer("Player"));
 		Debug.DrawLine(sightStart.position, sightEnd.position, Color.green);
 		
 		if (collision)
 		{
-			print("TURN AROUND!");
 			this.transform.localScale = new Vector3((transform.localScale.x == -1) ? 1 : -1, 1, 1);
 		}
 		turnAround = transform.localScale.x == 1;
